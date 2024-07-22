@@ -1,0 +1,6 @@
+events.data.microsoft.com
+wd.microsoft.com
+winatp-gw-cus
+automatedirstrprdcus
+endpoint.security.microsoft.com
+smartscreen.microsoft.com
