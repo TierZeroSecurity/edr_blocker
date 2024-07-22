@@ -32,10 +32,14 @@ Example: python3 edr_blocker.py -i eth0 -f mde_block.txt -t 192.168.0.50 -gw 192
 ```
 
 ## FILE
+This is probably not a complete list for everyone. But worked in our lab environment. 
 block_mde.txt:
 ```
 events.data.microsoft.com
 wd.microsoft.com
+wdcpalt.microsoft.com
+wdcp.microsoft.com
+blob.core.windows.net
 winatp-gw-cus
 automatedirstrprdcus
 endpoint.security.microsoft.com
@@ -63,6 +67,10 @@ Install Python Scapy
 ```
 source myenv/bin/activate
 sudo pip install scapy
+```
+Enable packet forwarding
+```
+sysctl -w net.ipv4.ip_forward=1
 ```
 Run edr_blocker.py
 ```
