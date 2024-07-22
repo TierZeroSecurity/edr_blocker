@@ -14,7 +14,7 @@ Blocks EDR Telemetry by conducting Man-in-the-Middle attack where network filter
 
 usage: edr_blocker.py [-h] -i INTERFACE -f FILE [-m] [-v] -t TARGET -gw GATEWAY
 
-Sniff TLS Client Hello packets and block specified domains.
+Performs ARP Poisoning against victim host(s) and blocks EDR telemetry by utilising iptables.
 
 options:
   -h, --help            show this help message and exit
@@ -27,4 +27,20 @@ options:
                         Target IP address or range (e.g., 192.168.0.1-10 or 192.168.0.1,192.168.0.2 (no space)
   -gw GATEWAY, --gateway GATEWAY
                         Gateway IP address
+```
+
+## FILE
+block_mde.txt:
+```
+events.data.microsoft.com
+wd.microsoft.com
+winatp-gw-cus
+automatedirstrprdcus
+endpoint.security.microsoft.com
+smartscreen.microsoft.com
+```
+
+block_cs.txt:
+```
+cloudsink.net
 ```
