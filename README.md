@@ -1,4 +1,4 @@
-# edr_blocker
+# EDR Telemetry Blocker
 Blocks EDR Telemetry by performing Man-in-the-Middle attack where network filtering is applied using iptables. The destination IP addresses are generated based on the server name in TLS Client Hello packet and the provided block list in a file. 
 
 ```
