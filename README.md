@@ -76,3 +76,16 @@ Run edr_blocker.py
 ```
 sudo python3 edr_blocker.py -h
 ```
+# Some useful commands
+Check bloked IP addresses and number of blocked packets
+```
+iptables -L -v -n
+```
+Flush iptables rules
+```
+iptables -F
+```
+Add destination IP address to iptables DROP rule
+```
+iptables -A FORWARD -d <IP> -j DROP
+```
