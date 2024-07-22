@@ -27,6 +27,8 @@ options:
                         Target IP address or range (e.g., 192.168.0.1-10 or 192.168.0.1,192.168.0.2 (no space)
   -gw GATEWAY, --gateway GATEWAY
                         Gateway IP address
+
+Example: python3 edr_blocker.py -i eth0 -f mde_block.txt -t 192.168.0.50 -gw 192.168.0.1
 ```
 
 ## FILE
