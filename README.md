@@ -46,3 +46,25 @@ block_cs.txt:
 ```
 cloudsink.net
 ```
+# Installing edr_blocker.py
+```
+git clone git@github.com:TierZeroSecurity/edr_blocker.git
+cd edr_blocker
+```
+Install python venv
+```
+pip install virtualenv
+```
+Create virtual environment
+```
+python3 -m venv myenv
+```
+Install Python Scapy
+```
+source myenv/bin/activate
+sudo pip install scapy
+```
+Run edr_blocker.py
+```
+sudo python3 edr_blocker.py -h
+```
