@@ -1,5 +1,5 @@
 # EDR Telemetry Blocker
-Blocks EDR Telemetry by performing Man-in-the-Middle attack where network filtering is applied using iptables. The blocked destination IP addresses are parsed based on the server name in TLS Client Hello packet and the provided blocked server name (or blocked string) list in the file. 
+Blocks EDR Telemetry by performing Person-in-the-Middle attack where network filtering is applied using iptables. The blocked destination IP addresses are parsed based on the server name in TLS Client Hello packet and the provided blocked server name (or blocked string) list in the file. 
 
 ```
 # python3 edr_blocker.py -h
